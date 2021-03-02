@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b4e5e5fb0f86ecc47befe11168a4f8ed
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - scrollView: {instanceID: 0}
+  - scrollContent: {instanceID: 0}
+  - scrollItemPrefab: {instanceID: 0}
+  - scrollItemPrefab2: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
