@@ -89,6 +89,7 @@ public class ScrollScript : MonoBehaviour
         {
             scrollItemObj = Instantiate(playerScrollItemPrefab);
             scrollItemObj.transform.SetParent(scrollContent.transform, false);
+            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = playerDialogues[option];
         }
 
@@ -96,6 +97,7 @@ public class ScrollScript : MonoBehaviour
         {
             scrollItemObj = Instantiate(playerScrollItemPrefab2);
             scrollItemObj.transform.SetParent(scrollContent.transform, false);
+            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = playerDialogues[option];
         }
 
@@ -103,6 +105,7 @@ public class ScrollScript : MonoBehaviour
         {
             scrollItemObj = Instantiate(playerScrollItemPrefab3);
             scrollItemObj.transform.SetParent(scrollContent.transform, false);
+            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = playerDialogues[option];
         }
 
@@ -117,6 +120,7 @@ public class ScrollScript : MonoBehaviour
         {
             scrollItemObj = Instantiate(alisonScrollItemPrefab);
             scrollItemObj.transform.SetParent(scrollContent.transform, false);
+            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = alisonDialogues[option];
         }
 
@@ -124,6 +128,7 @@ public class ScrollScript : MonoBehaviour
         {
             scrollItemObj = Instantiate(alisonScrollItemPrefab2);
             scrollItemObj.transform.SetParent(scrollContent.transform, false);
+            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = alisonDialogues[option];
         }
 
@@ -131,6 +136,7 @@ public class ScrollScript : MonoBehaviour
         {
             scrollItemObj = Instantiate(alisonScrollItemPrefab3);
             scrollItemObj.transform.SetParent(scrollContent.transform, false);
+            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = alisonDialogues[option];
         }
 
