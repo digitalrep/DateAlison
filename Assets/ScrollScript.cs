@@ -34,32 +34,21 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(4, "Bothered", "Yeah, actually, it kinda does. It makes it hard to know what to talk to you about.", "Hmm. I see. Well, you could always ask me.", 9, 10),
         new DialogueOption(5, "Lie", "Yeah, I'm great. What did you get up to today?", "Not much, to be honest. What about you?", 11, 12),
         new DialogueOption(6, "Truth", "I'm okay, but... Actually... I've had a bad day. My boss just blamed me for something that wasn't my fault.", "Oh, no. That sucks. I'm sorry that happened.", 13, 14),
+        new DialogueOption(7, "Reassure", "That's ok. I find reading boring anyway.", "Me too. I always prefer to wait for the movie to come out.", 0, 0),
+        new DialogueOption(8, "Challenge", "", "", 0, 0),
+        new DialogueOption(9, "", "", "", 0, 0),
+        new DialogueOption(10, "", "", "", 0, 0),
+        new DialogueOption(11, "Question", "Not much?", "Yup. That's what I said.", 0, 0),
+        new DialogueOption(12, "Answer", "Just work... It was boring.", "I hope your day gets less boring now that you're talking to me.", 0, 0),
+        new DialogueOption(13, "", "", "", 0, 0),
+        new DialogueOption(14, "", "", "", 0, 0),
+        new DialogueOption(15, "", "", "", 0, 0),
+        new DialogueOption(16, "", "", "", 0, 0),
+        new DialogueOption(17, "", "", "", 0, 0),
+        new DialogueOption(18, "", "", "", 0, 0),
     };
 
     private int current_index = 0;
-
-    /*
-    private string[] playerDialogues = {
-        "Hello, Alison. I found your profile intriguing... If a little... Mysterious.",
-        "Hey Alison, how are you?"
-    };
-    private string[] alisonDialogues = {
-        "Hi! Thanks for messaging me. Yeah, I guess it is mysterious. Does that bother you ?",
-        "Hey there, I'm good. How are you?"
-    };
-
-    private string[] buttonOption1s =
-    {
-        "No, not at all. A little mystery never hurt anyone.",
-        "That's ok. I find reading boring anyway."
-    };
-
-    private string[] buttonOption2s =
-    {
-        "Well I'm glad to hear that, because I'm really not an open book.",
-        "Me too. I always prefer watching the movie to reading the book."
-    };
-    */
 
     private int suspicionCounter = 0;
 
@@ -77,7 +66,7 @@ public class ScrollScript : MonoBehaviour
     public void printDialogue(int option)
     {
         float beginTime = Time.time; 
-        int lineLength = 40;
+        int lineLength = 39;
 
         DialogueOption chosenDialogue = dialogueOptions[option];
 
@@ -100,15 +89,18 @@ public class ScrollScript : MonoBehaviour
 
         // Get next two options and fill buttons
         current_index = option;
+        Debug.Log("OPtion index: " + option);
 
         buttonOption1.onClick.RemoveAllListeners();
         buttonOption2.onClick.RemoveAllListeners();
 
         buttonOption1.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_1()].get_button_text();
+        Debug.Log("option 1 button text: " + dialogueOptions[chosenDialogue.get_option_1()].get_button_text());
         buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_1()].get_id()); });
 
         buttonOption2.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_2()].get_button_text();
-        buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
+        Debug.Log("option 2 button text: " + dialogueOptions[chosenDialogue.get_option_2()].get_button_text());
+        buttonOption2.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
     }
 
     IEnumerator PrintPlayerDialogue(int option, int numLines, string dialogue)
