@@ -49,7 +49,6 @@ public class ScrollScript : MonoBehaviour
     };
 
     private int current_index = 0;
-
     private int suspicionCounter = 0;
 
     void Start()
