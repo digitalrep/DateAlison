@@ -50,11 +50,18 @@ public class ScrollScript : MonoBehaviour
 
     private int current_index = 0;
     private int suspicionCounter = 0;
+    private float ratio = 0f;
 
     void Start()
     {
         buttonOption1.onClick.AddListener(delegate { printDialogue(1); });
         buttonOption2.onClick.AddListener(delegate { printDialogue(2); });
+
+        Debug.Log("Screen width: " + Screen.width);
+
+        ratio = Screen.width / 1080f;
+
+        Debug.Log("Ratio: " + ratio);
     }
 
     void Update()
@@ -65,7 +72,7 @@ public class ScrollScript : MonoBehaviour
     public void printDialogue(int option)
     {
         float beginTime = Time.time; 
-        int lineLength = 39;
+        int lineLength = 48;
 
         DialogueOption chosenDialogue = dialogueOptions[option];
 
@@ -86,7 +93,6 @@ public class ScrollScript : MonoBehaviour
 
         StartCoroutine(PrintAlisonDialogue(option, numLines, chosenDialogue.get_alison_dialogue()));
 
-        // Get next two options and fill buttons
         current_index = option;
         Debug.Log("OPtion index: " + option);
 
@@ -108,24 +114,24 @@ public class ScrollScript : MonoBehaviour
         if (numLines == 1)
         {
             scrollItemObj = Instantiate(playerScrollItemPrefab);
-            scrollItemObj.transform.SetParent(scrollContent.transform, false);
-            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
+            scrollItemObj.transform.localScale = new Vector3(ratio, ratio, ratio);
+            scrollItemObj.transform.SetParent(scrollContent.transform);
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
         if (numLines == 2)
         {
             scrollItemObj = Instantiate(playerScrollItemPrefab2);
-            scrollItemObj.transform.SetParent(scrollContent.transform, false);
-            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
+            scrollItemObj.transform.localScale = new Vector3(ratio, ratio, ratio);
+            scrollItemObj.transform.SetParent(scrollContent.transform);
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
         if (numLines == 3)
         {
             scrollItemObj = Instantiate(playerScrollItemPrefab3);
-            scrollItemObj.transform.SetParent(scrollContent.transform, false);
-            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
+            scrollItemObj.transform.localScale = new Vector3(ratio, ratio, ratio);
+            scrollItemObj.transform.SetParent(scrollContent.transform);
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
@@ -139,24 +145,24 @@ public class ScrollScript : MonoBehaviour
         if (numLines == 1)
         {
             scrollItemObj = Instantiate(alisonScrollItemPrefab);
-            scrollItemObj.transform.SetParent(scrollContent.transform, false);
-            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
+            scrollItemObj.transform.localScale = new Vector3(ratio, ratio, ratio);
+            scrollItemObj.transform.SetParent(scrollContent.transform);
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
         if (numLines == 2)
         {
             scrollItemObj = Instantiate(alisonScrollItemPrefab2);
-            scrollItemObj.transform.SetParent(scrollContent.transform, false);
-            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
+            scrollItemObj.transform.localScale = new Vector3(ratio, ratio, ratio);
+            scrollItemObj.transform.SetParent(scrollContent.transform);
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
         if (numLines == 3)
         {
             scrollItemObj = Instantiate(alisonScrollItemPrefab3);
-            scrollItemObj.transform.SetParent(scrollContent.transform, false);
-            scrollItemObj.transform.localScale = Vector3.one * 0.8f;
+            scrollItemObj.transform.localScale = new Vector3(ratio, ratio, ratio);
+            scrollItemObj.transform.SetParent(scrollContent.transform);
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
