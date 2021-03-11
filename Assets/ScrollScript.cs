@@ -19,6 +19,13 @@ public class ScrollScript : MonoBehaviour
     public GameObject alisonScrollItemPrefab3;
     public GameObject playerScrollItemPrefab3;
 
+    public GameObject alisonImage;
+
+    public Sprite neutral;
+    public Sprite shocked;
+    public Sprite curious;
+    public Sprite disappointed;
+
     public Button buttonOption1;
     public Button buttonOption2;
 
@@ -27,25 +34,25 @@ public class ScrollScript : MonoBehaviour
     GameObject scrollItemObj;
 
     private DialogueOption[] dialogueOptions = {
-        new DialogueOption(0, "", "", "", 1, 2),
-        new DialogueOption(1, "Curious Opening", "Hello, Alison. I found your profile intriguing... If a little... Mysterious.", "Hi! Thanks for messaging me. Yeah, I guess it is mysterious. Does that bother you?", 3, 4),
-        new DialogueOption(2, "Normal Opening", "Hey Alison, how are you?", "Hey there, I'm good. How are you?", 5, 6),
-        new DialogueOption(3, "Not Bothered", "No, not at all. A little mystery never hurt anyone.", "Well I'm glad to hear that, because I'm really not an open book.", 7, 8),
-        new DialogueOption(4, "Bothered", "Yeah, actually, it kinda does. It makes it hard to know what to talk to you about.", "Hmm. I see. Well, you could always ask me.", 9, 10),
-        new DialogueOption(5, "Lie", "Yeah, I'm great. What did you get up to today?", "Not much, to be honest. What about you?", 11, 12),
-        new DialogueOption(6, "Truth", "I'm okay, but... Actually... I've had a bad day. My boss just blamed me for something that wasn't my fault.", "Oh, no. That sucks. I'm sorry that happened.", 13, 14),
-        new DialogueOption(7, "Reassure", "That's ok. I find reading boring anyway.", "Me too. I always prefer to wait for the movie to come out.", 0, 0),
-        new DialogueOption(8, "Challenge", "", "", 0, 0),
-        new DialogueOption(9, "", "", "", 0, 0),
-        new DialogueOption(10, "", "", "", 0, 0),
-        new DialogueOption(11, "Question", "Not much?", "Yup. That's what I said.", 0, 0),
-        new DialogueOption(12, "Answer", "Just work... It was boring.", "I hope your day gets less boring now that you're talking to me.", 0, 0),
-        new DialogueOption(13, "", "", "", 0, 0),
-        new DialogueOption(14, "", "", "", 0, 0),
-        new DialogueOption(15, "", "", "", 0, 0),
-        new DialogueOption(16, "", "", "", 0, 0),
-        new DialogueOption(17, "", "", "", 0, 0),
-        new DialogueOption(18, "", "", "", 0, 0),
+        new DialogueOption(0, "", "", "", 1, 2, "neutral"),
+        new DialogueOption(1, "Curious Opening", "Hello, Alison. I found your profile intriguing... If a little... Mysterious.", "Hi! Thanks for messaging me. Yeah, I guess it is mysterious. Does that bother you?", 3, 4, "shocked"),
+        new DialogueOption(2, "Normal Opening", "Hey Alison, how are you?", "Hey there, I'm good. How are you?", 5, 6, "neutral"),
+        new DialogueOption(3, "Not Bothered", "No, not at all. A little mystery never hurt anyone.", "Well I'm glad to hear that, because I'm really not an open book.", 7, 8, "neutral"),
+        new DialogueOption(4, "Bothered", "Yeah, actually, it kinda does. It makes it hard to know what to talk to you about.", "Hmm. I see. Well, you could always ask me.", 9, 10, "curious"),
+        new DialogueOption(5, "Lie", "Yeah, I'm great. What did you get up to today?", "Not much, to be honest. What about you?", 11, 12, "neutral"),
+        new DialogueOption(6, "Truth", "I'm okay, but... Actually... I've had a bad day. My boss just blamed me for something that wasn't my fault.", "Oh, no. That sucks. I'm sorry that happened.", 13, 14, "disappointed"),
+        new DialogueOption(7, "Reassure", "That's ok. I find reading boring anyway.", "Me too. I always prefer to wait for the movie to come out.", 0, 0, "neutral"),
+        new DialogueOption(8, "Challenge", "", "", 0, 0, "neutral"),
+        new DialogueOption(9, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(10, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(11, "Question", "Not much?", "Yup. That's what I said.", 0, 0, "disappointed"),
+        new DialogueOption(12, "Answer", "Just work... It was boring.", "I hope your day gets less boring now that you're talking to me.", 0, 0, "neutral"),
+        new DialogueOption(13, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(14, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(15, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(16, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(17, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(18, "", "", "", 0, 0, "neutral"),
     };
 
     private int current_index = 0;
@@ -75,6 +82,27 @@ public class ScrollScript : MonoBehaviour
         int lineLength = 48;
 
         DialogueOption chosenDialogue = dialogueOptions[option];
+
+        string mood = chosenDialogue.get_mood();
+
+        switch(mood)
+        {
+            case "neutral":
+                alisonImage.GetComponent<Image>().sprite = neutral;
+                break;
+            case "shocked":
+                alisonImage.GetComponent<Image>().sprite = shocked;
+                break;
+            case "curious":
+                alisonImage.GetComponent<Image>().sprite = curious;
+                break;
+            case "disappointed":
+                alisonImage.GetComponent<Image>().sprite = disappointed;
+                break;
+            default:
+                alisonImage.GetComponent<Image>().sprite = neutral;
+                break;
+        }
 
         int playerLength = chosenDialogue.get_player_dialogue().Length;
         int alisonLength = chosenDialogue.get_alison_dialogue().Length;

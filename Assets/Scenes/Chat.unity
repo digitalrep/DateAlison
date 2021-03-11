@@ -478,6 +478,11 @@ MonoBehaviour:
     type: 3}
   playerScrollItemPrefab3: {fileID: 1822894639961185944, guid: 2a2095a35660b8046881977abc09479a,
     type: 3}
+  alisonImage: {fileID: 1291926390}
+  neutral: {fileID: 21300000, guid: 020e46bd673487347ac5ad36fea1ba60, type: 3}
+  shocked: {fileID: 21300000, guid: b15b71b855e3d2443869b169f8302e67, type: 3}
+  curious: {fileID: 21300000, guid: 7699988df3575f94c870ddf9d508abbc, type: 3}
+  disappointed: {fileID: 21300000, guid: 805c8719444d88a4bb30522b3b919e06, type: 3}
   buttonOption1: {fileID: 1537935806}
   buttonOption2: {fileID: 204772915}
 --- !u!4 &225715142
@@ -1471,7 +1476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 788b431a6c24f004c847572bf6d723c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 020e46bd673487347ac5ad36fea1ba60, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

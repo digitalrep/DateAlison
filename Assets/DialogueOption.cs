@@ -7,8 +7,9 @@ public class DialogueOption
     private string alison_dialogue;
     private int option1_id;
     private int option2_id;
+    private string mood;
 
-    public DialogueOption(int id, string button_text, string player_dialogue, string alison_dialogue, int option1, int option2)
+    public DialogueOption(int id, string button_text, string player_dialogue, string alison_dialogue, int option1, int option2, string mood)
     {
         this.id = id;
         this.button_text = button_text;
@@ -16,6 +17,7 @@ public class DialogueOption
         this.alison_dialogue = alison_dialogue;
         this.option1_id = option1;
         this.option2_id = option2;
+        this.mood = mood;
     }
 
     public int get_id()
@@ -47,4 +49,10 @@ public class DialogueOption
     {
         return this.option2_id;
     }
+
+    public string get_mood()
+    {
+        return this.mood;
+    }
+
 }
