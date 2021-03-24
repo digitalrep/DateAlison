@@ -38,13 +38,13 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(1, "Curious Opening", "Hello, Alison. I found your profile intriguing... If a little... Mysterious.", "Hi! Thanks for messaging me. Yeah, I guess it is mysterious. Does that bother you?", 3, 4, "shocked"),
         new DialogueOption(2, "Normal Opening", "Hey Alison, how are you?", "Hey there, I'm good. How are you?", 5, 6, "neutral"),
         new DialogueOption(3, "Not Bothered", "No, not at all. A little mystery never hurt anyone.", "Well I'm glad to hear that, because I'm really not an open book.", 7, 8, "neutral"),
-        new DialogueOption(4, "Bothered", "Yeah, actually, it kinda does. It makes it hard to know what to talk to you about.", "Hmm. I see. Well, you could always ask me.", 9, 10, "curious"),
+        new DialogueOption(4, "Bothered", "Yeah, actually, it kinda does. It makes it hard to know what to talk to you about.", "Hmm. I see. Well, you could always just ask me.", 9, 10, "curious"),
         new DialogueOption(5, "Lie", "Yeah, I'm great. What did you get up to today?", "Not much, to be honest. What about you?", 11, 12, "neutral"),
         new DialogueOption(6, "Truth", "I'm okay, but... Actually... I've had a bad day. My boss just blamed me for something that wasn't my fault.", "Oh, no. That sucks. I'm sorry that happened.", 13, 14, "disappointed"),
         new DialogueOption(7, "Reassure", "That's ok. I find reading boring anyway.", "Me too. I always prefer to wait for the movie to come out.", 15, 16, "neutral"),
         new DialogueOption(8, "Challenge", "", "", 17, 18, "neutral"),
-        new DialogueOption(9, "", "", "", 19, 20, "neutral"),
-        new DialogueOption(10, "", "", "", 21, 22, "neutral"),
+        new DialogueOption(9, "Ask Interests", "Alright... What are some things you like to talk about?", "Hmm. I really asked for that, didn't I? Let's just talk about you, instead.", 19, 20, "neutral"),
+        new DialogueOption(10, "Argue", "But I wouldn't have to ask if you just put it on your profile...", "You're the kind of person who uses walkthroughs when you play video games, aren't you?", 21, 22, "neutral"),
         new DialogueOption(11, "Question", "Not much?", "Yup. That's what I said.", 23, 24, "disappointed"),
         new DialogueOption(12, "Answer", "Just work... It was boring.", "I hope your day gets less boring now that you're talking to me.", 25, 26, "neutral"),
         new DialogueOption(13, "Play on Sympathy", "Yeah... He's had it in for me since day one. I try my hardest but it never seems good enough.", "", 27, 28, "neutral"),
@@ -53,6 +53,10 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(16, "Ask Favourite Movie", "Speaking of movies, which one's your favourite?", "Hmm... Probably 'Breakfast at Tiffany's.'", 33, 34, "neutral"),
         new DialogueOption(17, "", "", "", 0, 0, "neutral"),
         new DialogueOption(18, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(19, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(20, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(21, "Admit it", "Uh, yeah, actually I do. Is that so bad?", "Haha I knew it!", 0, 0, "neutral"),
+        new DialogueOption(22, "Deny it", "No. Not at all. But if a game proves too difficult to play, I would probably just walk away from it.", "Are you the kind of person who needs an instruction manual to operate a microwave?", 0, 0, "neutral"),
     };
 
     private int current_index = 0;
