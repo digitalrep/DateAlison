@@ -1,6 +1,4 @@
-﻿#pragma strict
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,6 +29,7 @@ public class ScrollScript : MonoBehaviour
 
     public DialogueOption chosenDialogue;
 
+    private List<DialogueOption> chosenOptions = new List<DialogueOption>();
     private AudioSource source;
 
     GameObject scrollItemObj;
@@ -70,13 +69,27 @@ public class ScrollScript : MonoBehaviour
         buttonOption1.onClick.AddListener(delegate { printDialogue(1); });
         buttonOption2.onClick.AddListener(delegate { printDialogue(2); });
 
-        Debug.Log("Screen width: " + Screen.width);
-
         ratio = Screen.width / 1080f;
 
-        Debug.Log("Ratio: " + ratio);
-
         source = GetComponent<AudioSource>();
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("Enabled");
+        for (int i = 0; i < chosenOptions.Count; i++)
+        {
+            Debug.Log("chosen option " + i + ": " + chosenOptions[i]);
+        }
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("Disabled");
+        for(int i=0; i<chosenOptions.Count; i++)
+        {
+            Debug.Log("chosen option " + i + ": " + chosenOptions[i]);
+        }
     }
 
     void Update()
@@ -86,14 +99,17 @@ public class ScrollScript : MonoBehaviour
 
     public void printDialogue(int option)
     {
-        float beginTime = Time.time; 
+        buttonOption1.interactable = false;
+        buttonOption2.interactable = false;
+
+        float beginTime = Time.time;
         int lineLength = 48;
 
         DialogueOption chosenDialogue = dialogueOptions[option];
 
         string mood = chosenDialogue.get_mood();
 
-        switch(mood)
+        switch (mood)
         {
             case "neutral":
                 alisonImage.GetComponent<Image>().sprite = neutral;
@@ -130,18 +146,21 @@ public class ScrollScript : MonoBehaviour
         StartCoroutine(PrintAlisonDialogue(option, numLines, chosenDialogue.get_alison_dialogue()));
 
         current_index = option;
-        Debug.Log("OPtion index: " + option);
+        chosenOptions.Add(dialogueOptions[current_index]);
 
         buttonOption1.onClick.RemoveAllListeners();
         buttonOption2.onClick.RemoveAllListeners();
 
         buttonOption1.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_1()].get_button_text();
-        Debug.Log("option 1 button text: " + dialogueOptions[chosenDialogue.get_option_1()].get_button_text());
+        //Debug.Log("option 1 button text: " + dialogueOptions[chosenDialogue.get_option_1()].get_button_text());
         buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_1()].get_id()); });
 
         buttonOption2.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_2()].get_button_text();
-        Debug.Log("option 2 button text: " + dialogueOptions[chosenDialogue.get_option_2()].get_button_text());
+        //Debug.Log("option 2 button text: " + dialogueOptions[chosenDialogue.get_option_2()].get_button_text());
         buttonOption2.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
+
+        buttonOption1.interactable = true;
+        buttonOption2.interactable = true;
     }
 
     IEnumerator PrintPlayerDialogue(int option, int numLines, string dialogue)
@@ -220,4 +239,5 @@ public class ScrollScript : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("profile");
     }
+
 }

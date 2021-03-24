@@ -1,5 +1,4 @@
-﻿
-public class DialogueOption 
+﻿public class DialogueOption
 {
     private int id;
     private string button_text;
