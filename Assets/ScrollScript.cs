@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,7 +30,6 @@ public class ScrollScript : MonoBehaviour
 
     public DialogueOption chosenDialogue;
 
-    private List<DialogueOption> chosenOptions = new List<DialogueOption>();
     private AudioSource source;
 
     GameObject scrollItemObj;
@@ -72,24 +72,26 @@ public class ScrollScript : MonoBehaviour
         ratio = Screen.width / 1080f;
 
         source = GetComponent<AudioSource>();
+
+        Debug.Log("Level from GameControl.instance: " + GameControl.instance.level);
     }
 
     private void OnEnable()
     {
-        Debug.Log("Enabled");
-        for (int i = 0; i < chosenOptions.Count; i++)
+
+        for (int i = 0; i < GameControl.instance.chosenOptions.Count; i++)
         {
-            Debug.Log("chosen option " + i + ": " + chosenOptions[i]);
+            //this line makes the editor crash...
+            //specifically the get_id() bit
+
+            //printDialogue(GameControl.instance.chosenOptions[i].get_id());
         }
+
     }
 
     private void OnDisable()
     {
-        Debug.Log("Disabled");
-        for(int i=0; i<chosenOptions.Count; i++)
-        {
-            Debug.Log("chosen option " + i + ": " + chosenOptions[i]);
-        }
+
     }
 
     void Update()
@@ -99,13 +101,24 @@ public class ScrollScript : MonoBehaviour
 
     public void printDialogue(int option)
     {
-        buttonOption1.interactable = false;
-        buttonOption2.interactable = false;
-
         float beginTime = Time.time;
         int lineLength = 48;
 
         DialogueOption chosenDialogue = dialogueOptions[option];
+
+        buttonOption1.onClick.RemoveAllListeners();
+        buttonOption2.onClick.RemoveAllListeners();
+
+        buttonOption1.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_1()].get_button_text();
+        //Debug.Log("option 1 button text: " + dialogueOptions[chosenDialogue.get_option_1()].get_button_text());
+        buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_1()].get_id()); });
+
+        buttonOption2.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_2()].get_button_text();
+        //Debug.Log("option 2 button text: " + dialogueOptions[chosenDialogue.get_option_2()].get_button_text());
+        buttonOption2.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
+
+        buttonOption1.interactable = false;
+        buttonOption2.interactable = false;
 
         string mood = chosenDialogue.get_mood();
 
@@ -133,10 +146,6 @@ public class ScrollScript : MonoBehaviour
 
         int numLines = (int)Math.Ceiling((double)playerLength / lineLength);
 
-        Debug.Log(playerLength);
-        Debug.Log(playerLength / lineLength);
-        Debug.Log((int)Math.Ceiling((double)playerLength / lineLength));
-
         StartCoroutine(PrintPlayerDialogue(option, numLines, chosenDialogue.get_player_dialogue()));
 
         StartCoroutine(ForceScrollDown());
@@ -146,21 +155,8 @@ public class ScrollScript : MonoBehaviour
         StartCoroutine(PrintAlisonDialogue(option, numLines, chosenDialogue.get_alison_dialogue()));
 
         current_index = option;
-        chosenOptions.Add(dialogueOptions[current_index]);
+        GameControl.instance.chosenOptions.Add(dialogueOptions[current_index]);
 
-        buttonOption1.onClick.RemoveAllListeners();
-        buttonOption2.onClick.RemoveAllListeners();
-
-        buttonOption1.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_1()].get_button_text();
-        //Debug.Log("option 1 button text: " + dialogueOptions[chosenDialogue.get_option_1()].get_button_text());
-        buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_1()].get_id()); });
-
-        buttonOption2.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_2()].get_button_text();
-        //Debug.Log("option 2 button text: " + dialogueOptions[chosenDialogue.get_option_2()].get_button_text());
-        buttonOption2.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
-
-        buttonOption1.interactable = true;
-        buttonOption2.interactable = true;
     }
 
     IEnumerator PrintPlayerDialogue(int option, int numLines, string dialogue)
@@ -224,6 +220,8 @@ public class ScrollScript : MonoBehaviour
         source.Play();
         StartCoroutine(ForceScrollDown());
 
+        buttonOption1.interactable = true;
+        buttonOption2.interactable = true;
     }
 
     IEnumerator ForceScrollDown()

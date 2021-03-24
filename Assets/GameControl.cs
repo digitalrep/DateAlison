@@ -4,22 +4,26 @@ using UnityEngine;
 
 public class GameControl : MonoBehaviour
 {
-    public int level;
-    public List<DialogueOption> chosenOptions;
+
+    public static GameControl instance;
+
+    public int level = 1;
+    public List<DialogueOption> chosenOptions = new List<DialogueOption>();
 
     private void Awake()
     {
+
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else if(instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        //Do not destroy this object when we load a new scene
         DontDestroyOnLoad(gameObject);
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }

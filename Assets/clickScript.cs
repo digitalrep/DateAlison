@@ -7,7 +7,6 @@ public class clickScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Started");
     }
 
     // Update is called once per frame
@@ -18,7 +17,6 @@ public class clickScript : MonoBehaviour
 
     public void goToChat()
     {
-        Debug.Log("Clicked");
         UnityEngine.SceneManagement.SceneManager.LoadScene("Chat");
     }
 }
