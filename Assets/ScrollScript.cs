@@ -31,6 +31,8 @@ public class ScrollScript : MonoBehaviour
 
     public DialogueOption chosenDialogue;
 
+    private AudioSource source;
+
     GameObject scrollItemObj;
 
     private DialogueOption[] dialogueOptions = {
@@ -73,6 +75,8 @@ public class ScrollScript : MonoBehaviour
         ratio = Screen.width / 1080f;
 
         Debug.Log("Ratio: " + ratio);
+
+        source = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -198,6 +202,7 @@ public class ScrollScript : MonoBehaviour
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
+        source.Play();
         StartCoroutine(ForceScrollDown());
 
     }
