@@ -30,6 +30,9 @@ public class ScrollScript : MonoBehaviour
 
     public DialogueOption chosenDialogue;
 
+    public GameObject gameOverPanel;
+    public Text nameTxt;
+
     private AudioSource source;
 
     GameObject scrollItemObj;
@@ -52,12 +55,90 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(14, "Act Tough", "I shouldn't complain. It's no big deal! Isn't everyone's boss an asshole?", "... No. I miss my boss. She was an amazing woman.", 29, 30, "neutral"),
         new DialogueOption(15, "Bad Joke", "Maybe we should start our own book club.", "One where we don't read any books? That'd be weird. What would we do?", 31, 32, "disappointed"),
         new DialogueOption(16, "Ask Favourite Movie", "Speaking of movies, which one's your favourite?", "Hmm... Probably 'Breakfast at Tiffany's.'", 33, 34, "neutral"),
-        new DialogueOption(17, "", "", "", 0, 0, "neutral"),
-        new DialogueOption(18, "", "", "", 0, 0, "neutral"),
-        new DialogueOption(19, "", "", "", 0, 0, "neutral"),
-        new DialogueOption(20, "", "", "", 0, 0, "neutral"),
-        new DialogueOption(21, "Admit it", "Uh, yeah, actually I do. Is that so bad?", "Haha I knew it!", 0, 0, "neutral"),
-        new DialogueOption(22, "Deny it", "No. Not at all. But if a game proves too difficult to play, I would probably just walk away from it.", "Are you the kind of person who needs an instruction manual to operate a microwave?", 0, 0, "neutral"),
+        new DialogueOption(17, "", "", "", 35, 36, "neutral"),
+        new DialogueOption(18, "", "", "", 37, 38, "neutral"),
+        new DialogueOption(19, "", "", "", 39, 40, "neutral"),
+        new DialogueOption(20, "", "", "", 41, 42, "neutral"),
+        new DialogueOption(21, "Admit it", "Uh, yeah, actually I do. Is that so bad?", "Haha I knew it!", 43, 44, "neutral"),
+        new DialogueOption(22, "Deny it", "No. Not at all. But if a game proves too difficult to play, I would probably just walk away from it.", "Are you the kind of person who needs an instruction manual to operate a microwave?", 45, 46, "shocked"),
+        new DialogueOption(23, "Question More", "You had to have done something... Did you make the bed at least?", "You ask a lot of questions.", 47, 48, "disappointed"),
+        new DialogueOption(24, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(25, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(26, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(27, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(28, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(29, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(30, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(31, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(32, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(33, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(34, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(35, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(36, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(37, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(38, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(39, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(40, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(41, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(42, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(43, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(44, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(45, "Yes", "Of course. I like to know how to best utilise things. I know how to defrost a whole chicken in my microwave without ruining it. Do you?", "Uh, no. Probably not.", 0, 0, "neutral"),
+        new DialogueOption(46, "No", "Of course not. Are you the kind of person who makes fun of people who read instruction manuals?", "Mabye I am.", 0, 0, "neutral"),
+        new DialogueOption(47, "Apologise", "I do, I'm sorry. I'm just trying to make conversation.", "", 0, 0, "neutral"),
+        new DialogueOption(48, "Defend", "You dodge a lot of questions.", "I think we should stop talking.", 100, 100, "neutral"),
+        new DialogueOption(49, "", "", "", 0, 0, ""),
+        new DialogueOption(50, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(51, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(52, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(53, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(54, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(55, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(56, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(57, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(58, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(59, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(60, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(61, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(62, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(63, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(64, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(65, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(66, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(67, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(68, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(69, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(70, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(71, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(72, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(73, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(74, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(75, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(76, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(77, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(78, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(79, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(80, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(81, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(82, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(83, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(84, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(85, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(86, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(87, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(88, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(89, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(90, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(91, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(92, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(93, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(94, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(95, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(96, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(97, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(98, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(99, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(100, "Continue", " ", " ", 0, 0, "neutral"),
     };
 
     private int current_index = 0;
@@ -79,14 +160,6 @@ public class ScrollScript : MonoBehaviour
     private void OnEnable()
     {
 
-        for (int i = 0; i < GameControl.instance.chosenOptions.Count; i++)
-        {
-            //this line makes the editor crash...
-            //specifically the get_id() bit
-
-            //printDialogue(GameControl.instance.chosenOptions[i].get_id());
-        }
-
     }
 
     private void OnDisable()
@@ -102,60 +175,82 @@ public class ScrollScript : MonoBehaviour
     public void printDialogue(int option)
     {
         float beginTime = Time.time;
-        int lineLength = 48;
+        int lineLength = 52;
 
-        DialogueOption chosenDialogue = dialogueOptions[option];
-
-        buttonOption1.onClick.RemoveAllListeners();
-        buttonOption2.onClick.RemoveAllListeners();
-
-        buttonOption1.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_1()].get_button_text();
-        //Debug.Log("option 1 button text: " + dialogueOptions[chosenDialogue.get_option_1()].get_button_text());
-        buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_1()].get_id()); });
-
-        buttonOption2.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_2()].get_button_text();
-        //Debug.Log("option 2 button text: " + dialogueOptions[chosenDialogue.get_option_2()].get_button_text());
-        buttonOption2.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
-
-        buttonOption1.interactable = false;
-        buttonOption2.interactable = false;
-
-        string mood = chosenDialogue.get_mood();
-
-        switch (mood)
+        if(option != 100)
         {
-            case "neutral":
-                alisonImage.GetComponent<Image>().sprite = neutral;
-                break;
-            case "shocked":
-                alisonImage.GetComponent<Image>().sprite = shocked;
-                break;
-            case "curious":
-                alisonImage.GetComponent<Image>().sprite = curious;
-                break;
-            case "disappointed":
-                alisonImage.GetComponent<Image>().sprite = disappointed;
-                break;
-            default:
-                alisonImage.GetComponent<Image>().sprite = neutral;
-                break;
+            DialogueOption chosenDialogue = dialogueOptions[option];
+
+            buttonOption1.onClick.RemoveAllListeners();
+            buttonOption2.onClick.RemoveAllListeners();
+
+            buttonOption1.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_1()].get_button_text();
+            buttonOption1.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_1()].get_id()); });
+
+            buttonOption2.GetComponentInChildren<Text>().text = dialogueOptions[chosenDialogue.get_option_2()].get_button_text();
+            buttonOption2.onClick.AddListener(delegate { printDialogue(dialogueOptions[chosenDialogue.get_option_2()].get_id()); });
+
+            buttonOption1.interactable = false;
+            buttonOption2.interactable = false;
+
+            string mood = chosenDialogue.get_mood();
+
+            switch (mood)
+            {
+                case "neutral":
+                    alisonImage.GetComponent<Image>().sprite = neutral;
+                    break;
+                case "shocked":
+                    alisonImage.GetComponent<Image>().sprite = shocked;
+                    break;
+                case "curious":
+                    alisonImage.GetComponent<Image>().sprite = curious;
+                    break;
+                case "disappointed":
+                    alisonImage.GetComponent<Image>().sprite = disappointed;
+                    break;
+                default:
+                    alisonImage.GetComponent<Image>().sprite = neutral;
+                    break;
+            }
+
+            int playerLength = chosenDialogue.get_player_dialogue().Length;
+            int alisonLength = chosenDialogue.get_alison_dialogue().Length;
+
+            int numLines = (int)Math.Ceiling((double)playerLength / lineLength);
+
+            StartCoroutine(PrintPlayerDialogue(option, numLines, chosenDialogue.get_player_dialogue()));
+
+            StartCoroutine(ForceScrollDown());
+
+            numLines = (int)Math.Ceiling((double)alisonLength / lineLength);
+
+            StartCoroutine(PrintAlisonDialogue(option, numLines, chosenDialogue.get_alison_dialogue()));
+
+            current_index = option;
+            GameControl.instance.chosenOptions.Add(dialogueOptions[current_index]);
+        } else
+        {
+            // Alison has unmatched with you
+            Image image = alisonImage.GetComponent<Image>();
+            Color invisible = new Color(image.color.r, image.color.g, image.color.b, 0f);
+            image.color = invisible;
+            nameTxt.text = "";
+            Image buttonImg = buttonOption1.GetComponent<Image>();
+            buttonImg.color = invisible;
+            Image button2Img = buttonOption2.GetComponent<Image>();
+            button2Img.color = invisible;
+            Image scrollbg = scrollView.GetComponent<Image>();
+            scrollbg.color = invisible;
+            GameObject[] clones = GameObject.FindGameObjectsWithTag("clone");
+            foreach(GameObject clone in clones)
+            {
+                GameObject.Destroy(clone);
+            }
+            // Retry?
+            gameOverPanel.GetComponent<CanvasGroup>().alpha = 1;
+            // Show ad
         }
-
-        int playerLength = chosenDialogue.get_player_dialogue().Length;
-        int alisonLength = chosenDialogue.get_alison_dialogue().Length;
-
-        int numLines = (int)Math.Ceiling((double)playerLength / lineLength);
-
-        StartCoroutine(PrintPlayerDialogue(option, numLines, chosenDialogue.get_player_dialogue()));
-
-        StartCoroutine(ForceScrollDown());
-
-        numLines = (int)Math.Ceiling((double)alisonLength / lineLength);
-
-        StartCoroutine(PrintAlisonDialogue(option, numLines, chosenDialogue.get_alison_dialogue()));
-
-        current_index = option;
-        GameControl.instance.chosenOptions.Add(dialogueOptions[current_index]);
 
     }
 
@@ -236,6 +331,11 @@ public class ScrollScript : MonoBehaviour
     public void goToProfile()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("profile");
+    }
+
+    public void goToChat()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chat");
     }
 
 }

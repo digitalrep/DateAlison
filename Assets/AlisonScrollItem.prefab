@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1027082642154220143}
   m_Layer: 5
   m_Name: AlisonScrollItem
-  m_TagString: Untagged
+  m_TagString: clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1, y: -0}
-  m_SizeDelta: {x: 942.4126, y: 56.033875}
+  m_AnchoredPosition: {x: -1.5, y: -0}
+  m_SizeDelta: {x: 962.8074, y: 56.033875}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5919946541048388790
 CanvasRenderer:
