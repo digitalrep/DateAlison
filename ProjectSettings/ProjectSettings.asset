@@ -731,10 +731,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: 3cacdc79-41f5-40aa-a1d9-aa80cae42a6e
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: DateAlison
+  organizationId: angela-3424675
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

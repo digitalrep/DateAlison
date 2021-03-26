@@ -147,9 +147,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 744502854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07e126c92cf0b2a409a0a7b1715a6ba6, type: 3}
+  m_Script: {fileID: 11500000, guid: b4e5e5fb0f86ecc47befe11168a4f8ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollView: {fileID: 0}
+  scrollContent: {fileID: 0}
+  alisonScrollItemPrefab: {fileID: 0}
+  playerScrollItemPrefab: {fileID: 0}
+  alisonScrollItemPrefab2: {fileID: 0}
+  playerScrollItemPrefab2: {fileID: 0}
+  alisonScrollItemPrefab3: {fileID: 0}
+  playerScrollItemPrefab3: {fileID: 0}
+  alisonImage: {fileID: 0}
+  neutral: {fileID: 0}
+  shocked: {fileID: 0}
+  curious: {fileID: 0}
+  disappointed: {fileID: 0}
+  buttonOption1: {fileID: 0}
+  buttonOption2: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  nameTxt: {fileID: 0}
 --- !u!4 &744502856
 Transform:
   m_ObjectHideFlags: 0
@@ -196,10 +213,10 @@ RectTransform:
   m_Father: {fileID: 1877286670}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.06716667, y: 0.12412501}
-  m_AnchorMax: {x: 0.9342222, y: 0.37034377}
-  m_AnchoredPosition: {x: 0.44177246, y: 0}
-  m_SizeDelta: {x: 0, y: 0.00024414062}
+  m_AnchorMin: {x: 0.06716667, y: 0.037656255}
+  m_AnchorMax: {x: 0.9342222, y: 0.35378125}
+  m_AnchoredPosition: {x: 0.051818848, y: 0.4000244}
+  m_SizeDelta: {x: 0, y: -0.7479248}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &860419126
 MonoBehaviour:
@@ -232,7 +249,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.6
   m_Text: 'I believe a person is more than their profile picture, their occupation,
     and definitely more than just their location.
 
@@ -283,10 +300,10 @@ RectTransform:
   m_Father: {fileID: 1877286670}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.093722194, y: 0.395}
-  m_AnchorMax: {x: 0.20088892, y: 0.41478127}
-  m_AnchoredPosition: {x: 0.10998535, y: -0.020004272}
-  m_SizeDelta: {x: -0.09510803, y: 0.5628052}
+  m_AnchorMin: {x: 0.1103889, y: 0.38321877}
+  m_AnchorMax: {x: 0.23700002, y: 0.41000003}
+  m_AnchoredPosition: {x: -0.36999512, y: -0.000015258789}
+  m_SizeDelta: {x: -0.23858643, y: -0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1172978097
 MonoBehaviour:
@@ -361,10 +378,10 @@ RectTransform:
   m_Father: {fileID: 1877286670}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.06716667, y: 0.39665627}
-  m_AnchorMax: {x: 0.08677779, y: 0.4132188}
-  m_AnchoredPosition: {x: -0.041381836, y: -0.08000183}
-  m_SizeDelta: {x: -0.082725525, y: -0.46084595}
+  m_AnchorMin: {x: 0.06716667, y: 0.38321877}
+  m_AnchorMax: {x: 0.09377779, y: 0.4076563}
+  m_AnchoredPosition: {x: -0.019958496, y: 0.16479492}
+  m_SizeDelta: {x: -0.043977737, y: 0.48957825}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1391695253
 MonoBehaviour:
@@ -738,9 +755,9 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.06716667, y: 0.90121883}
-  m_AnchorMax: {x: 0.4187778, y: 0.9622188}
-  m_AnchoredPosition: {x: -0.2999878, y: 0.8557129}
-  m_SizeDelta: {x: -0.65579224, y: -0.1444931}
+  m_AnchorMax: {x: 0.45766664, y: 0.99340624}
+  m_AnchoredPosition: {x: 0.6000061, y: 0.5}
+  m_SizeDelta: {x: 1.0963745, y: -0.8701935}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1776853287
 MonoBehaviour:
@@ -762,12 +779,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 28
+    m_Font: {fileID: 12800000, guid: 486f133f517256841ba040f359b7c567, type: 3}
+    m_FontSize: 44
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 12
-    m_MaxSize: 40
+    m_MinSize: 3
+    m_MaxSize: 44
     m_Alignment: 3
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -817,10 +834,10 @@ RectTransform:
   m_Father: {fileID: 1877286670}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.83377784, y: 0.920875}
-  m_AnchorMax: {x: 0.9342222, y: 0.9622188}
-  m_AnchoredPosition: {x: 0, y: 0.2999878}
-  m_SizeDelta: {x: -0.000045776367, y: 0.56677246}
+  m_AnchorMin: {x: 0.8143334, y: 0.92800003}
+  m_AnchorMax: {x: 0.9342222, y: 0.984}
+  m_AnchoredPosition: {x: 0.3000183, y: 0}
+  m_SizeDelta: {x: -0.5051117, y: -3.5888672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1787101537
 MonoBehaviour:
@@ -889,13 +906,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.9528302, b: 0.9154644, a: 0.6745098}
+  m_Color: {r: 0.2790139, g: 0.3584906, b: 0.35584137, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ec7abc290bbbd9c478da94bda41cf828, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72e07e346aacfa649889859247aacb59, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

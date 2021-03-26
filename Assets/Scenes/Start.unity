@@ -330,6 +330,8 @@ MonoBehaviour:
   disappointed: {fileID: 0}
   buttonOption1: {fileID: 0}
   buttonOption2: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  nameTxt: {fileID: 0}
 --- !u!1 &596435332
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,12 +364,12 @@ RectTransform:
   m_Children:
   - {fileID: 2097703293}
   m_Father: {fileID: 604552467}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.10555556, y: 0.411625}
-  m_AnchorMax: {x: 0.3896667, y: 0.455}
-  m_AnchoredPosition: {x: 0.16418457, y: -0.7480011}
-  m_SizeDelta: {x: -1.1847229, y: -3.9934692}
+  m_AnchorMin: {x: 0.36400002, y: 0.33065626}
+  m_AnchorMax: {x: 0.643, y: 0.38134375}
+  m_AnchoredPosition: {x: 1.1600037, y: -1.5}
+  m_SizeDelta: {x: 2.815277, y: 2.0993385}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &596435334
 MonoBehaviour:
@@ -491,8 +493,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1917232604}
-  - {fileID: 1366261475}
   - {fileID: 596435333}
+  - {fileID: 1184845445}
   m_Father: {fileID: 535463099}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -561,7 +563,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!1 &1366261474
+--- !u!1 &1184845444
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -569,9 +571,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1366261475}
-  - component: {fileID: 1366261477}
-  - component: {fileID: 1366261476}
+  - component: {fileID: 1184845445}
+  - component: {fileID: 1184845447}
+  - component: {fileID: 1184845446}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -579,32 +581,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &1366261475
+--- !u!224 &1184845445
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366261474}
+  m_GameObject: {fileID: 1184845444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 604552467}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.10555556, y: 0.630125}
-  m_AnchorMax: {x: 0.9082593, y: 0.6815625}
-  m_AnchoredPosition: {x: -1.5982971, y: 1}
-  m_SizeDelta: {x: -4.709717, y: 2.4197998}
+  m_AnchorMin: {x: 0.31822222, y: 0.6375625}
+  m_AnchorMax: {x: 0.6694443, y: 0.7245626}
+  m_AnchoredPosition: {x: -0.66659546, y: 2}
+  m_SizeDelta: {x: -1.3331146, y: -0.56642914}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1366261476
+--- !u!114 &1184845446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366261474}
+  m_GameObject: {fileID: 1184845444}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
@@ -618,26 +620,26 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 36
+    m_Font: {fileID: 12800000, guid: 486f133f517256841ba040f359b7c567, type: 3}
+    m_FontSize: 64
     m_FontStyle: 1
     m_BestFit: 1
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 3
-    m_AlignByGeometry: 0
+    m_MinSize: 4
+    m_MaxSize: 64
+    m_Alignment: 4
+    m_AlignByGeometry: 1
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: DateAlison
---- !u!222 &1366261477
+  m_Text: Date Alison
+--- !u!222 &1184845447
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366261474}
+  m_GameObject: {fileID: 1184845444}
   m_CullTransparentMesh: 0
 --- !u!1 &1917232603
 GameObject:
@@ -671,10 +673,10 @@ RectTransform:
   m_Father: {fileID: 604552467}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.10555556, y: 0.455}
-  m_AnchorMax: {x: 0.9082593, y: 0.59300005}
-  m_AnchoredPosition: {x: -1.5966187, y: -2.699997}
-  m_SizeDelta: {x: -4.706299, y: 0.08981323}
+  m_AnchorMin: {x: 0.047222223, y: 0.42100003}
+  m_AnchorMax: {x: 0.9471667, y: 0.6016563}
+  m_AnchoredPosition: {x: 2.2000122, y: 1.9000015}
+  m_SizeDelta: {x: 2.0927124, y: 0.19821167}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917232605
 MonoBehaviour:
@@ -697,10 +699,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 1
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -710,10 +712,12 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Get Alison to continue to respond to you.
 
-    Find out personal things
+
+    Discover personal things
     about her.
 
-    Get her to agree to meet you. '
+
+    Get her to want to meet you. '
 --- !u!222 &1917232606
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -756,8 +760,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -6}
+  m_SizeDelta: {x: 0, y: 1.6739502}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2097703294
 MonoBehaviour:
@@ -779,8 +783,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: 486f133f517256841ba040f359b7c567, type: 3}
+    m_FontSize: 38
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2

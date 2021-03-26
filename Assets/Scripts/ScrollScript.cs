@@ -33,7 +33,11 @@ public class ScrollScript : MonoBehaviour
     public GameObject gameOverPanel;
     public Text nameTxt;
 
-    private AudioSource source;
+    public AudioClip notification;
+    public AudioClip success;
+
+    private AudioSource notificationSource;
+    private AudioSource successSource;
 
     GameObject scrollItemObj;
 
@@ -52,7 +56,7 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(11, "Question", "Not much?", "Yup. That's what I said.", 23, 24, "disappointed"),
         new DialogueOption(12, "Answer", "Just work... It was boring.", "I hope your day gets less boring now that you're talking to me.", 25, 26, "neutral"),
         new DialogueOption(13, "Play on Sympathy", "Yeah... He's had it in for me since day one. I try my hardest but it never seems good enough.", "", 27, 28, "neutral"),
-        new DialogueOption(14, "Act Tough", "I shouldn't complain. It's no big deal! Isn't everyone's boss an asshole?", "... No. I miss my boss. She was an amazing woman.", 29, 30, "neutral"),
+        new DialogueOption(14, "Act Tough", "I shouldn't complain. It's no big deal! Isn't everyone's boss an asshole?", "No. Not all of them. I really miss my boss. She is an amazing woman.", 29, 30, "neutral"),
         new DialogueOption(15, "Bad Joke", "Maybe we should start our own book club.", "One where we don't read any books? That'd be weird. What would we do?", 31, 32, "disappointed"),
         new DialogueOption(16, "Ask Favourite Movie", "Speaking of movies, which one's your favourite?", "Hmm... Probably 'Breakfast at Tiffany's.'", 33, 34, "neutral"),
         new DialogueOption(17, "", "", "", 35, 36, "neutral"),
@@ -67,8 +71,8 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(26, "", "", "", 0, 0, "neutral"),
         new DialogueOption(27, "", "", "", 0, 0, "neutral"),
         new DialogueOption(28, "", "", "", 0, 0, "neutral"),
-        new DialogueOption(29, "", "", "", 0, 0, "neutral"),
-        new DialogueOption(30, "", "", "", 0, 0, "neutral"),
+        new DialogueOption(29, "Miss her?", "You miss her? What happened? You get fired?", "No. I had to relocate. I couldn't keep my old job.", 0, 0, "neutral"),
+        new DialogueOption(30, "Joke", "Yeah sure - I miss my boss, too - though I should really just put my foot right down on the accelerator.", "Haha! Wow. You really hate him, hey?", 0, 0, "shocked"),
         new DialogueOption(31, "", "", "", 0, 0, "neutral"),
         new DialogueOption(32, "", "", "", 0, 0, "neutral"),
         new DialogueOption(33, "", "", "", 0, 0, "neutral"),
@@ -143,6 +147,7 @@ public class ScrollScript : MonoBehaviour
 
     private int current_index = 0;
     private int suspicionCounter = 0;
+    private int location = 0;
     private float ratio = 0f;
 
     void Start()
@@ -151,8 +156,6 @@ public class ScrollScript : MonoBehaviour
         buttonOption2.onClick.AddListener(delegate { printDialogue(2); });
 
         ratio = Screen.width / 1080f;
-
-        source = GetComponent<AudioSource>();
 
         Debug.Log("Level from GameControl.instance: " + GameControl.instance.level);
     }
@@ -175,10 +178,17 @@ public class ScrollScript : MonoBehaviour
     public void printDialogue(int option)
     {
         float beginTime = Time.time;
-        int lineLength = 52;
+        int lineLength = 56;
 
         if(option != 100)
         {
+            if(option == 29)
+            {
+                //successSource.Play();
+                GetComponent<AudioSource>().PlayOneShot(success, 1);
+                location++;
+            }
+
             DialogueOption chosenDialogue = dialogueOptions[option];
 
             buttonOption1.onClick.RemoveAllListeners();
@@ -312,7 +322,8 @@ public class ScrollScript : MonoBehaviour
             scrollItemObj.transform.Find("num").gameObject.GetComponent<Text>().text = dialogue;
         }
 
-        source.Play();
+        //notificationSource.Play();
+        GetComponent<AudioSource>().PlayOneShot(notification, 1);
         StartCoroutine(ForceScrollDown());
 
         buttonOption1.interactable = true;

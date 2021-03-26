@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 486f133f517256841ba040f359b7c567
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: raustila
+  fontNames:
+  - raustila
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9577188e17f884d4ea06b498a4ee5b9d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
