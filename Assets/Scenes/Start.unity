@@ -332,6 +332,8 @@ MonoBehaviour:
   buttonOption2: {fileID: 0}
   gameOverPanel: {fileID: 0}
   nameTxt: {fileID: 0}
+  notification: {fileID: 0}
+  success: {fileID: 0}
 --- !u!1 &596435332
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.31822222, y: 0.6375625}
   m_AnchorMax: {x: 0.6694443, y: 0.7245626}
-  m_AnchoredPosition: {x: -0.66659546, y: 2}
+  m_AnchoredPosition: {x: -0.66656, y: 0.28314}
   m_SizeDelta: {x: -1.3331146, y: -0.56642914}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1184845446
@@ -673,10 +675,10 @@ RectTransform:
   m_Father: {fileID: 604552467}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.047222223, y: 0.42100003}
-  m_AnchorMax: {x: 0.9471667, y: 0.6016563}
-  m_AnchoredPosition: {x: 2.2000122, y: 1.9000015}
-  m_SizeDelta: {x: 2.0927124, y: 0.19821167}
+  m_AnchorMin: {x: 0.08877778, y: 0.42100003}
+  m_AnchorMax: {x: 0.92066675, y: 0.6015625}
+  m_AnchoredPosition: {x: 0.2000122, y: -6.7}
+  m_SizeDelta: {x: -2.5965576, y: 13.8732605}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917232605
 MonoBehaviour:
@@ -709,15 +711,9 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Get Alison to continue to respond to you.
-
-
-    Discover personal things
-    about her.
-
-
-    Get her to want to meet you. '
+    m_LineSpacing: 2
+  m_Text: 'Get Alison to continue to respond to you. Discover personal things about
+    her - get to know her. Organise to meet up with her. '
 --- !u!222 &1917232606
 CanvasRenderer:
   m_ObjectHideFlags: 0

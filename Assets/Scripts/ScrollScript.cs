@@ -50,7 +50,7 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(5, "Lie", "Yeah, I'm great. What did you get up to today?", "Not much, to be honest. What about you?", 11, 12, "neutral"),
         new DialogueOption(6, "Truth", "I'm okay, but... Actually... I've had a bad day. My boss just blamed me for something that wasn't my fault.", "Oh, no. That sucks. I'm sorry that happened.", 13, 14, "disappointed"),
         new DialogueOption(7, "Reassure", "That's ok. I find reading boring anyway.", "Me too. I always prefer to wait for the movie to come out.", 15, 16, "neutral"),
-        new DialogueOption(8, "Challenge", "", "", 17, 18, "neutral"),
+        new DialogueOption(8, "Challenge", "Really? How can someone go about getting to know you, then?", "Just by chatting to me.", 17, 18, "neutral"),
         new DialogueOption(9, "Ask Interests", "Alright... What are some things you like to talk about?", "Hmm. I really asked for that, didn't I? Let's just talk about you, instead.", 19, 20, "neutral"),
         new DialogueOption(10, "Argue", "But I wouldn't have to ask if you just put it on your profile...", "You're the kind of person who uses walkthroughs when you play video games, aren't you?", 21, 22, "neutral"),
         new DialogueOption(11, "Question", "Not much?", "Yup. That's what I said.", 23, 24, "disappointed"),
@@ -75,8 +75,8 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(30, "Joke", "Yeah sure - I miss my boss, too - though I should really just put my foot right down on the accelerator.", "Haha! Wow. You really hate him, hey?", 61, 62, "shocked"),
         new DialogueOption(31, "Support Group", "Talk about our troubled childhoods, sort out all our issues...", "Who says I have any?", 63, 64, "shocked"),
         new DialogueOption(32, "Drink", "Drink copious amounts of alcohol.", "Sounds like my kind of book club!", 65, 66, "neutral"),
-        new DialogueOption(33, "Question", "Why is that your favourite?", "", 67, 68, "neutral"),
-        new DialogueOption(34, "", "", "", 69, 70, "neutral"),
+        new DialogueOption(33, "Question", "Why is that your favourite?", "I think I like it because it reminds me that anyone can start anew, create a new life.", 67, 68, "neutral"),
+        new DialogueOption(34, "Share Favourite", "I think mine would have to be 'Marnie.'", "Err... Is that a Hitchcock movie? I don't like thrillers.", 69, 70, "shocked"),
         new DialogueOption(35, "", "", "", 71, 72, "neutral"),
         new DialogueOption(36, "", "", "", 73, 74, "neutral"),
         new DialogueOption(37, "", "", "", 75, 76, "neutral"),
@@ -105,11 +105,11 @@ public class ScrollScript : MonoBehaviour
         new DialogueOption(60, "", "", "", 121, 122, "neutral"),
         new DialogueOption(61, "", "", "", 123, 124, "neutral"),
         new DialogueOption(62, "", "", "", 125, 126, "neutral"),
-        new DialogueOption(63, "Challenge", "Oh, I'm sure you do. Everyone has at least some.", "Yes, okay, I guess you're right.", 127, 128, "neutral"),
+        new DialogueOption(63, "Challenge", "Oh, I'm sure you do. Everyone has at least some.", "Yes, okay. I guess you're right.", 127, 128, "neutral"),
         new DialogueOption(64, "Agree", "", "", 129, 130, "neutral"),
         new DialogueOption(65, "Question", "Oh, really? What's your drink of choice?", "I like an ice cold beer at the end of a hard day.", 131, 132, "neutral"),
         new DialogueOption(66, "", "", "", 133, 134, "neutral"),
-        new DialogueOption(67, "", "", "", 135, 136, "neutral"),
+        new DialogueOption(67, "Question", "Do you want to start new?", "You ask too many questions.", 135, 136, "neutral"),
         new DialogueOption(68, "", "", "", 137, 138, "neutral"),
         new DialogueOption(69, "", "", "", 139, 140, "neutral"),
         new DialogueOption(70, "", "", "", 141, 142, "neutral"),
@@ -282,11 +282,9 @@ public class ScrollScript : MonoBehaviour
 
         if(option != 100)
         {
-            if(option == 29)
+            if(option == 16 || option == 29 || option == 65)
             {
-                //successSource.Play();
                 GetComponent<AudioSource>().PlayOneShot(success, 1);
-                location++;
             }
 
             DialogueOption chosenDialogue = dialogueOptions[option];
