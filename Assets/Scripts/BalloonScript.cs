@@ -19,19 +19,13 @@ public class BalloonScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Collision Enter detected");
-        gameObject.GetComponent<SpriteRenderer>().sprite = deflated_balloon;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Trigger Enter detected");
         Debug.Log(gameObject.GetComponentsInChildren<Image>().Length);  // returns 0
         Debug.Log(transform.GetChild(2));
         transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
-        gameObject.GetComponent<Rigidbody2D>().mass = 10;
+        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
     }
 
     void OnBecameInvisible()

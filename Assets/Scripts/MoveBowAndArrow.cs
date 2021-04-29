@@ -28,12 +28,30 @@ public class MoveBowAndArrow : MonoBehaviour
         origY = Input.GetAxis("Mouse Y");
         origPosition = Input.mousePosition;
 
-        GameObject balloon1 = Instantiate(balloon, new Vector3(0, 6f, 0), Quaternion.identity);
-        balloon1.GetComponent<Rigidbody2D>().mass = 0.0001f;
+        GameObject balloon1 = Instantiate(balloon, new Vector3(1.2f, 6f, 0), Quaternion.identity);
+        balloon1.GetComponent<Rigidbody2D>().mass = 0.01f;
         balloon1.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
         SpriteRenderer[] sprites = balloon1.GetComponentsInChildren<SpriteRenderer>();
         SpriteRenderer balloonImg = sprites[sprites.Length - 1];
         balloonImg.GetComponent<SpriteRenderer>().color = Color.green;
+
+        GameObject balloon2 = Instantiate(balloon, new Vector3(0, 1f, 0), Quaternion.identity);
+        balloon2.GetComponent<Rigidbody2D>().mass = 0.01f;
+        balloon2.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
+        sprites = balloon2.GetComponentsInChildren<SpriteRenderer>();
+        balloonImg = sprites[sprites.Length - 1];
+        balloonImg.GetComponent<SpriteRenderer>().color = Color.red;
+
+        GameObject balloon3 = Instantiate(balloon, new Vector3(-1.8f, 12f, 0), Quaternion.identity);
+        balloon3.GetComponent<Rigidbody2D>().mass = 0.01f;
+        balloon3.GetComponent<Rigidbody2D>().gravityScale = 0.02f; 
+        sprites = balloon3.GetComponentsInChildren<SpriteRenderer>();
+        balloonImg = sprites[sprites.Length - 1];
+        balloonImg.GetComponent<SpriteRenderer>().color = Color.blue;
+
+        balloons[0] = balloon1;
+        balloons[1] = balloon2;
+        balloons[2] = balloon3;
 
         //gameObject.transform.rotation.eulerAngles.z
         quiver[0] = Instantiate(arrow, new Vector3(-1.22f, -3.57f, 0), Quaternion.identity);
