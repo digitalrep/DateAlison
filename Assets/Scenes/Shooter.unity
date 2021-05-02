@@ -303,6 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 8019037978319729751, guid: 7615142ee48718644bcb5deade6d1c4b, type: 3}
   balloon: {fileID: 6116994667431153352, guid: 518f31c7cfa3d024ab369e8506d16bb5, type: 3}
+  arrow_back: {fileID: 21300000, guid: bcc60574b6d2a7442b1b973891df046e, type: 3}
 --- !u!61 &661578115
 BoxCollider2D:
   m_ObjectHideFlags: 0

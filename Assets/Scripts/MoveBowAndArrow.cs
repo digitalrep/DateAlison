@@ -21,6 +21,8 @@ public class MoveBowAndArrow : MonoBehaviour
 
     bool fired = false;
 
+    public Sprite arrow_back;
+
     private void Start()
     {
         midWidth = Screen.width / 2;
@@ -53,7 +55,6 @@ public class MoveBowAndArrow : MonoBehaviour
         balloons[1] = balloon2;
         balloons[2] = balloon3;
 
-        //gameObject.transform.rotation.eulerAngles.z
         quiver[0] = Instantiate(arrow, new Vector3(-1.22f, -3.57f, 0), Quaternion.identity);
         quiver[0].transform.Rotate(0, 0, -26.409f);
     }
@@ -63,7 +64,6 @@ public class MoveBowAndArrow : MonoBehaviour
     {
         if(quiver[currentArrow].transform.position.y > 6f || quiver[currentArrow].transform.position.x > Screen.width)
         {
-            //Debug.Log("Arrow out of bounds");
             fired = false;
             Destroy(quiver[currentArrow]);
             currentArrow++;
@@ -87,20 +87,13 @@ public class MoveBowAndArrow : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
-        
-            //Debug.Log("Left mouse button pressed");
-
-            //quiver[currentArrow].GetComponent<Rigidbody2D>().transform.position = new Vector3(-1.37f, -3.50f, 0);
+            // Change image from arrow to arrow_back.png
+            quiver[currentArrow].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = arrow_back;
 
             if (Input.mousePosition.x != origPosition.x || Input.mousePosition.y != Input.mousePosition.y)
             {
-
-                //Debug.Log("Mouse Position Differs");
-
                 if (Input.mousePosition.x < origPosition.x)
                 {
-                    //Debug.Log("Mouse moved left");
-
                     BoxCollider2D collider = GetComponent<BoxCollider2D>();
                     Vector3 centre = collider.bounds.center;
                     transform.RotateAround(centre, Vector3.forward, 2);
@@ -109,14 +102,10 @@ public class MoveBowAndArrow : MonoBehaviour
 
                 if (Input.mousePosition.x > origPosition.x)
                 {
-                    //Debug.Log("Mouse moved right");
-
                     BoxCollider2D collider = GetComponent<BoxCollider2D>();
                     Vector3 centre = collider.bounds.center;
                     transform.RotateAround(centre, Vector3.forward, -2);
                     quiver[currentArrow].transform.RotateAround(centre, Vector3.forward, -2);
-
-                    //Debug.Log("Z euler angle of bow: " + gameObject.transform.rotation.eulerAngles.z);
                 }
 
                 origPosition = Input.mousePosition;
@@ -126,7 +115,6 @@ public class MoveBowAndArrow : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0))
         {
-            //Debug.Log("Mouse button released");
             fired = true;
         }
 
