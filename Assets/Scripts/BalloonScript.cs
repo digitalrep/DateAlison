@@ -23,49 +23,73 @@ public class BalloonScript : MonoBehaviour
         
     }
 
+    private IEnumerator StartCounter()
+    {
+        float countDown = 2f;
+        for(int i=0; i<2000; i++)
+        {
+            while(countDown >= 0)
+            {
+                countDown -= Time.smoothDeltaTime;
+                yield return null;
+            }
+        }
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().correct_button.SetActive(false);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger Enter detected");
-        Debug.Log(gameObject.GetComponentsInChildren<Image>().Length);  // returns 0
-        Debug.Log(transform.GetChild(2));
-        transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
+        Debug.Log("Trigger Enter detected with: ");
+        Debug.Log(collision.gameObject.name);
 
-        int current_answer = GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_question;
-
-        Debug.Log(transform.GetChild(1));
-
-        if (transform.GetChild(1).GetComponent<TextMeshPro>().text != answers[current_answer])
+        if (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().firing)
         {
-            switch(GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong)
+            transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
+
+            int current_answer = GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_question;
+
+            Debug.Log(transform.GetChild(1));
+
+            if (transform.GetChild(1).GetComponent<TextMeshPro>().text != answers[current_answer])
             {
-                case 0:
-                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health1.GetComponent<SpriteRenderer>().sprite = health_hollow;
-                    break;
-                case 1:
-                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health2.GetComponent<SpriteRenderer>().sprite = health_hollow;
-                    break;
-                case 2:
-                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health3.GetComponent<SpriteRenderer>().sprite = health_hollow;
-                    break;
-                case 3:
-                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health4.GetComponent<SpriteRenderer>().sprite = health_hollow;
-                    break;
-                case 4:
-                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health5.GetComponent<SpriteRenderer>().sprite = health_hollow;
-                    break;
-                default:
-                    Debug.Log("Default on switch");
-                    break;
+                switch (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong)
+                {
+                    case 0:
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health1.GetComponent<SpriteRenderer>().sprite = health_hollow;
+                        break;
+                    case 1:
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health2.GetComponent<SpriteRenderer>().sprite = health_hollow;
+                        break;
+                    case 2:
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health3.GetComponent<SpriteRenderer>().sprite = health_hollow;
+                        break;
+                    case 3:
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health4.GetComponent<SpriteRenderer>().sprite = health_hollow;
+                        break;
+                    case 4:
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health5.GetComponent<SpriteRenderer>().sprite = health_hollow;
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().out_button.SetActive(true);
+                        break;
+                    default:
+                        Debug.Log("Default on switch");
+                        break;
+                }
+            }
+            else
+            {
+                GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().correct_button.SetActive(true);
+                StartCoroutine(StartCounter());
+            }
+
+            GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong++;
+
+            if (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong == 5)
+            {
+                //Game over?
             }
         }
 
-        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong++;
-
-        if(GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong == 5)
-        {
-            //Game over?
-        }
     }
 
     void OnBecameInvisible()

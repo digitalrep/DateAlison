@@ -15,18 +15,21 @@ public class MoveBowAndArrow : MonoBehaviour
     public GameObject health4;
     public GameObject health5;
 
+    public GameObject out_button;
+    public GameObject correct_button;
+
     float midWidth;
     float origX, origY;
     Vector3 origPosition;
     
     int currentArrow = 0;
-    int question = 1;
 
     GameObject[] quiver = new GameObject[6];
     GameObject[] balloons = new GameObject[10];
     public GameObject[] hearts = new GameObject[5];
 
     bool fired = false;
+    public bool firing = false;
 
     public Sprite arrow_back;
     public Sprite bow_cocked;
@@ -42,6 +45,9 @@ public class MoveBowAndArrow : MonoBehaviour
         origY = Input.GetAxis("Mouse Y");
         origPosition = Input.mousePosition;
 
+        correct_button.SetActive(false);
+        out_button.SetActive(false);
+
         GameObject balloon1 = Instantiate(balloon, new Vector3(1.2f, 6f, 0), Quaternion.identity);
         balloon1.GetComponent<Rigidbody2D>().mass = 0.01f;
         balloon1.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
@@ -52,9 +58,39 @@ public class MoveBowAndArrow : MonoBehaviour
         balloonImg.GetComponent<SpriteRenderer>().color = greeny;
         balloon1.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "clowns";
 
+        GameObject balloon4 = Instantiate(balloon, new Vector3(0.4f, 8f, 0), Quaternion.identity);
+        balloon4.GetComponent<Rigidbody2D>().mass = 0.01f;
+        balloon4.GetComponent<Rigidbody2D>().gravityScale = 0.03f;
+        sprites = balloon4.GetComponentsInChildren<SpriteRenderer>();
+        balloonImg = sprites[sprites.Length - 1];
+        Color ywllo = new Color();
+        ColorUtility.TryParseHtmlString("#E0C25A", out ywllo);
+        balloonImg.GetComponent<SpriteRenderer>().color = ywllo;
+        balloon4.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "snakes";
+
+        GameObject balloon5 = Instantiate(balloon, new Vector3(1.0f, 10f, 0), Quaternion.identity);
+        balloon5.GetComponent<Rigidbody2D>().mass = 0.01f;
+        balloon5.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
+        sprites = balloon5.GetComponentsInChildren<SpriteRenderer>();
+        balloonImg = sprites[sprites.Length - 1];
+        Color erd = new Color();
+        ColorUtility.TryParseHtmlString("#B54C4C", out erd);
+        balloonImg.GetComponent<SpriteRenderer>().color = erd;
+        balloon5.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "night driving";
+
+        GameObject balloon6 = Instantiate(balloon, new Vector3(-1.4f, 5f, 0), Quaternion.identity);
+        balloon6.GetComponent<Rigidbody2D>().mass = 0.01f;
+        balloon6.GetComponent<Rigidbody2D>().gravityScale = 0.06f;
+        sprites = balloon6.GetComponentsInChildren<SpriteRenderer>();
+        balloonImg = sprites[sprites.Length - 1];
+        Color erga = new Color();
+        ColorUtility.TryParseHtmlString("#4DB466", out erga);
+        balloonImg.GetComponent<SpriteRenderer>().color = erga;
+        balloon6.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "spoons";
+
         GameObject balloon2 = Instantiate(balloon, new Vector3(0, 1f, 0), Quaternion.identity);
         balloon2.GetComponent<Rigidbody2D>().mass = 0.01f;
-        balloon2.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
+        balloon2.GetComponent<Rigidbody2D>().gravityScale = 0.04f;
         sprites = balloon2.GetComponentsInChildren<SpriteRenderer>();
         balloonImg = sprites[sprites.Length - 1];
         Color salmon = new Color();
@@ -78,14 +114,6 @@ public class MoveBowAndArrow : MonoBehaviour
 
         quiver[0] = Instantiate(arrow, new Vector3(-1.22f, -3.57f, 0), Quaternion.identity);
         quiver[0].transform.Rotate(0, 0, -26.409f);
-
-        /*
-        hearts[0] = health1;
-        hearts[1] = health2;
-        hearts[2] = health3;
-        hearts[3] = health4;
-        hearts[4] = health5;
-        */
     }
 
     // Update is called once per frame
@@ -94,6 +122,7 @@ public class MoveBowAndArrow : MonoBehaviour
         if(quiver[currentArrow].transform.position.y > 6f || quiver[currentArrow].transform.position.x > Screen.width)
         {
             fired = false;
+            firing = false;
             Destroy(quiver[currentArrow]);
             currentArrow++;
             if(currentArrow < 5)
@@ -105,7 +134,7 @@ public class MoveBowAndArrow : MonoBehaviour
                 gameObject.transform.Rotate(0, 0, -26.909f);
             } else
             {
-                Debug.Log("Out of arrows");
+                out_button.SetActive(true);
             }
         }
 
@@ -116,6 +145,7 @@ public class MoveBowAndArrow : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
+            firing = true;
             quiver[currentArrow].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = arrow_back;
             transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bow_cocked;
 
