@@ -9,6 +9,12 @@ public class MoveBowAndArrow : MonoBehaviour
     public GameObject arrow;
     public GameObject balloon;
 
+    public GameObject health1;
+    public GameObject health2; 
+    public GameObject health3;
+    public GameObject health4;
+    public GameObject health5;
+
     float midWidth;
     float origX, origY;
     Vector3 origPosition;
@@ -18,10 +24,16 @@ public class MoveBowAndArrow : MonoBehaviour
 
     GameObject[] quiver = new GameObject[6];
     GameObject[] balloons = new GameObject[10];
+    public GameObject[] hearts = new GameObject[5];
 
     bool fired = false;
 
     public Sprite arrow_back;
+    public Sprite bow_cocked;
+    public Sprite bow;
+
+    public int current_wrong = 0;
+    public int current_question = 0;
 
     private void Start()
     {
@@ -35,21 +47,30 @@ public class MoveBowAndArrow : MonoBehaviour
         balloon1.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
         SpriteRenderer[] sprites = balloon1.GetComponentsInChildren<SpriteRenderer>();
         SpriteRenderer balloonImg = sprites[sprites.Length - 1];
-        balloonImg.GetComponent<SpriteRenderer>().color = Color.green;
+        Color greeny = new Color();
+        ColorUtility.TryParseHtmlString("#91D77B", out greeny);
+        balloonImg.GetComponent<SpriteRenderer>().color = greeny;
+        balloon1.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "clowns";
 
         GameObject balloon2 = Instantiate(balloon, new Vector3(0, 1f, 0), Quaternion.identity);
         balloon2.GetComponent<Rigidbody2D>().mass = 0.01f;
         balloon2.GetComponent<Rigidbody2D>().gravityScale = 0.02f;
         sprites = balloon2.GetComponentsInChildren<SpriteRenderer>();
         balloonImg = sprites[sprites.Length - 1];
-        balloonImg.GetComponent<SpriteRenderer>().color = Color.red;
+        Color salmon = new Color();
+        ColorUtility.TryParseHtmlString("#F27969", out salmon);
+        balloonImg.GetComponent<SpriteRenderer>().color = salmon;
+        balloon2.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "heights";
 
         GameObject balloon3 = Instantiate(balloon, new Vector3(-1.8f, 12f, 0), Quaternion.identity);
         balloon3.GetComponent<Rigidbody2D>().mass = 0.01f;
         balloon3.GetComponent<Rigidbody2D>().gravityScale = 0.02f; 
         sprites = balloon3.GetComponentsInChildren<SpriteRenderer>();
         balloonImg = sprites[sprites.Length - 1];
-        balloonImg.GetComponent<SpriteRenderer>().color = Color.blue;
+        Color purple = new Color();
+        ColorUtility.TryParseHtmlString("#B569F2", out purple);
+        balloonImg.GetComponent<SpriteRenderer>().color = purple;
+        balloon3.transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = "dogs";
 
         balloons[0] = balloon1;
         balloons[1] = balloon2;
@@ -57,6 +78,14 @@ public class MoveBowAndArrow : MonoBehaviour
 
         quiver[0] = Instantiate(arrow, new Vector3(-1.22f, -3.57f, 0), Quaternion.identity);
         quiver[0].transform.Rotate(0, 0, -26.409f);
+
+        /*
+        hearts[0] = health1;
+        hearts[1] = health2;
+        hearts[2] = health3;
+        hearts[3] = health4;
+        hearts[4] = health5;
+        */
     }
 
     // Update is called once per frame
@@ -87,8 +116,8 @@ public class MoveBowAndArrow : MonoBehaviour
 
         if(Input.GetMouseButton(0))
         {
-            // Change image from arrow to arrow_back.png
             quiver[currentArrow].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = arrow_back;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bow_cocked;
 
             if (Input.mousePosition.x != origPosition.x || Input.mousePosition.y != Input.mousePosition.y)
             {
@@ -116,6 +145,7 @@ public class MoveBowAndArrow : MonoBehaviour
         if(Input.GetMouseButtonUp(0))
         {
             fired = true;
+            transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = bow;
         }
 
     }
