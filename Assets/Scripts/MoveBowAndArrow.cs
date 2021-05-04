@@ -103,18 +103,19 @@ public class MoveBowAndArrow : MonoBehaviour
         ColorUtility.TryParseHtmlString(color, out newColor);
         balloonImg.GetComponent<SpriteRenderer>().color = newColor;
         balloons[num].transform.GetChild(1).GetComponent<TMPro.TextMeshPro>().text = fear;
+        balloons[num].name = fear + x + y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(balloons[21].transform.position.y < -6.8f)
+        if(balloons[21] != null && balloons[21].transform.position.y < -6.8f)
         {
             Debug.Log("Last balloon has left the building");
             no_balloons_button.SetActive(true);
         }
 
-        if(quiver[currentArrow].transform.position.y > 6f || quiver[currentArrow].transform.position.x > Screen.width)
+        if(quiver[currentArrow].transform.position.y > 4.2f || quiver[currentArrow].transform.position.x > 1.9f || quiver[currentArrow].transform.position.y < -5.0f || quiver[currentArrow].transform.position.x < -2.5f)
         {
             fired = false;
             Destroy(quiver[currentArrow]);
