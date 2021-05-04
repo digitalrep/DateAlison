@@ -42,7 +42,7 @@ public class BalloonScript : MonoBehaviour
         Debug.Log("Trigger Enter detected with: ");
         Debug.Log(collision.gameObject.name);
 
-        if (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().firing)
+        if (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().fired)
         {
             transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
             gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
@@ -86,7 +86,12 @@ public class BalloonScript : MonoBehaviour
 
             if (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong == 5)
             {
-                //Game over?
+                GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().out_button.SetActive(true);
+                GameObject[] balloons = GameObject.FindGameObjectsWithTag("balloon");
+                foreach(GameObject balloon in balloons)
+                {
+                    Destroy(balloon);
+                }
             }
         }
 
