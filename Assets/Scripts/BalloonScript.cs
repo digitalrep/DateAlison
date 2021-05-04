@@ -9,34 +9,6 @@ public class BalloonScript : MonoBehaviour
     public Sprite deflated_balloon;
     public Sprite health_hollow;
 
-    string[] answers = { "dogs", "0", };
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private IEnumerator StartCounter()
-    {
-        float countDown = 2f;
-        for(int i=0; i<2000; i++)
-        {
-            while(countDown >= 0)
-            {
-                countDown -= Time.smoothDeltaTime;
-                yield return null;
-            }
-        }
-        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().correct_button.SetActive(false);
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Collision detected on balloon AND an arrow has been fired
@@ -51,14 +23,15 @@ public class BalloonScript : MonoBehaviour
                 //Make the balloon look deflated and increase its gravity so it falls more quickly
                 transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
-                
-                int current_answer = GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_question;
+
+                Debug.Log("Current question: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question);
+                Debug.Log("Length correct answers: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers.Length);
 
                 //If the 'answer' written on this balloon DOES NOT match the answer to the question:
-                if (transform.GetChild(1).GetComponent<TextMeshPro>().text != answers[current_answer])
+                if (transform.GetChild(1).GetComponent<TextMeshPro>().text != GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question])
                 {
                     //Take away a heart/health object
-                    switch (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong)
+                    switch (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong)
                     {
                         case 0:
                             GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health1.GetComponent<SpriteRenderer>().sprite = health_hollow;
@@ -80,6 +53,22 @@ public class BalloonScript : MonoBehaviour
                             Debug.Log("Default on switch");
                             break;
                     }
+
+                    //Seeing as the answer was incorrect, increment current_wrong and check if we've used up all our health
+                    //If so destroy all the other balloons
+                    GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong++;
+
+                    if (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong == 5)
+                    {
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().out_button.SetActive(true);
+
+                        GameObject[] balloons = GameObject.FindGameObjectsWithTag("balloon");
+                        foreach (GameObject balloon in balloons)
+                        {
+                            Destroy(balloon);
+                        }
+                    }
+
                 }
                 else
                 {
@@ -91,23 +80,9 @@ public class BalloonScript : MonoBehaviour
                     {
                         Destroy(balloon);
                     }
+                    Debug.Log("Level from gameobject: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().level);
                 }
 
-                //Seeing as the answer was incorrect, increment current_wrong and check if we've used up all our health
-                //If so destroy all the other balloons
-                GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong++;
-
-                if (GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong == 5)
-                {
-                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().out_button.SetActive(true);
-
-                    GameObject[] balloons = GameObject.FindGameObjectsWithTag("balloon");
-                    foreach (GameObject balloon in balloons)
-                    {
-                        Destroy(balloon);
-                    }
-
-                }
             }
         }
 

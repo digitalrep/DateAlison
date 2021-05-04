@@ -2,26 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Android;
+using UnityEngine.UI;
 
 public class MoveBowAndArrow : MonoBehaviour
 {
     //Prefabs
     public GameObject arrow;
     public GameObject balloon;
-
-    public GameObject health1;
-    public GameObject health2; 
-    public GameObject health3;
-    public GameObject health4;
-    public GameObject health5;
-
     public GameObject out_button;
     public GameObject correct_button;
     public GameObject no_balloons_button;
     public GameObject no_arrows_button;
+    public GameObject health1;
+    public GameObject health2;
+    public GameObject health3;
+    public GameObject health4;
+    public GameObject health5;
+    public GameObject question_text;
 
-    float midWidth;
-    float origX, origY;
     Vector3 origPosition;
     
     int currentArrow = 0;
@@ -36,14 +34,8 @@ public class MoveBowAndArrow : MonoBehaviour
     public Sprite bow_cocked;
     public Sprite bow;
 
-    public int current_wrong = 0;
-    public int current_question = 0;
-
     private void Start()
     {
-        midWidth = Screen.width / 2;
-        origX = Input.GetAxis("Mouse X");
-        origY = Input.GetAxis("Mouse Y");
         origPosition = Input.mousePosition;
 
         correct_button.SetActive(false);
@@ -90,6 +82,8 @@ public class MoveBowAndArrow : MonoBehaviour
         makeBalloon(1.4f, 47.6f, 0f, numBalloon++, "#CF6A84", 0.0008f, "dogs3");
         makeBalloon(1.05f, 48f, 0f, numBalloon++, "#000000", 0.0009f, "flying3"); 
         makeBalloon(-1.05f, 49f, 0f, numBalloon++, "#ffffff", 0.0007f, "open spaces3");
+
+        question_text.GetComponent<Text>().text = GameObject.Find("StaticGameObject").GetComponent<GameControl>().questions[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question];
     }
 
     private void makeBalloon(float x, float y, float z, int num, string color, float gravity, string fear)

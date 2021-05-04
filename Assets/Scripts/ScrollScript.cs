@@ -337,6 +337,8 @@ public class ScrollScript : MonoBehaviour
 
             current_index = option;
             GameControl.instance.chosenOptions.Add(dialogueOptions[current_index]);
+
+            Debug.Log(dialogueOptions[current_index]);
         } else
         {
             // Alison has unmatched with you
