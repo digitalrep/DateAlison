@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deflated_balloon: {fileID: 21300000, guid: 06402cb03a7f1b248832abdd5bfc218f, type: 3}
   health_hollow: {fileID: 21300000, guid: 2786327347b8eab46932693d09f6b3dd, type: 3}
+  health_full: {fileID: 21300000, guid: b7020bc77824c7e4c8087621e770b043, type: 3}
 --- !u!58 &6116994667431153349
 CircleCollider2D:
   m_ObjectHideFlags: 0

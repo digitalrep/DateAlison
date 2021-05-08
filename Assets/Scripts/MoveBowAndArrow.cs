@@ -13,6 +13,7 @@ public class MoveBowAndArrow : MonoBehaviour
     public GameObject correct_button;
     public GameObject no_balloons_button;
     public GameObject no_arrows_button;
+    public GameObject status_text;
     public GameObject health1;
     public GameObject health2;
     public GameObject health3;
@@ -42,6 +43,7 @@ public class MoveBowAndArrow : MonoBehaviour
         out_button.SetActive(false);
         no_balloons_button.SetActive(false);
         no_arrows_button.SetActive(false);
+        status_text.SetActive(false);
 
         quiver[0] = Instantiate(arrow, new Vector3(-1.22f, -3.57f, 0), Quaternion.identity);
         quiver[0].transform.Rotate(0, 0, -26.409f);
@@ -107,6 +109,8 @@ public class MoveBowAndArrow : MonoBehaviour
         {
             Debug.Log("Last balloon has left the building");
             no_balloons_button.SetActive(true);
+            status_text.SetActive(true);
+            status_text.transform.GetComponent<Text>().text = "No Balloons Left!";
         }
 
         if(quiver[currentArrow].transform.position.y > 4.2f || quiver[currentArrow].transform.position.x > 1.9f || quiver[currentArrow].transform.position.y < -5.0f || quiver[currentArrow].transform.position.x < -2.5f)
@@ -117,6 +121,8 @@ public class MoveBowAndArrow : MonoBehaviour
             
             if(currentArrow == 50)
             {
+                status_text.SetActive(true);
+                status_text.transform.GetComponent<Text>().text = "No Arrows Left!";
                 no_arrows_button.SetActive(true);
             }
 

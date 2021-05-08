@@ -9,6 +9,7 @@ public class BalloonScript : MonoBehaviour
 {
     public Sprite deflated_balloon;
     public Sprite health_hollow;
+    public Sprite health_full;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -55,13 +56,17 @@ public class BalloonScript : MonoBehaviour
                             break;
                     }
 
-                    //Seeing as the answer was incorrect, increment current_wrong and check if we've used up all our health
+                    //INCORRECT ANSWER
+                    //increment current_wrong and check if we've used up all our health
                     //If so destroy all the other balloons
+
                     GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong++;
 
                     if (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong == 5)
                     {
                         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().out_button.SetActive(true);
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().status_text.SetActive(true);
+                        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().status_text.transform.GetComponent<Text>().text = "No Health Left!";
 
                         GameObject[] balloons = GameObject.FindGameObjectsWithTag("balloon");
                         foreach (GameObject balloon in balloons)
@@ -73,15 +78,19 @@ public class BalloonScript : MonoBehaviour
                 }
                 else
                 {
-                    //The answer is correct; the text on the balloon matches the answer to the question
+                    //CORRECT ANSWER
+                    //the text on the balloon matches the answer to the question
+
                     GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().correct_button.SetActive(true);
-                    //Destroy all balloons
+                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().status_text.SetActive(true);
+                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().status_text.transform.GetComponent<Text>().text = "You got it!";
+
                     GameObject[] balloons = GameObject.FindGameObjectsWithTag("balloon");
                     foreach (GameObject balloon in balloons)
                     {
                         Destroy(balloon);
                     }
-                    //Increment level
+
                     GameObject.Find("StaticGameObject").GetComponent<GameControl>().level++;
                 }
 
@@ -95,8 +104,21 @@ public class BalloonScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void restartShooterCorrect()
+    {
+        SceneManager.LoadScene("Shooter");
+    }
+
     public void restartShooter()
     {
+        GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong = 0;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health1.GetComponent<SpriteRenderer>().sprite = health_full;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health2.GetComponent<SpriteRenderer>().sprite = health_full;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health3.GetComponent<SpriteRenderer>().sprite = health_full;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health4.GetComponent<SpriteRenderer>().sprite = health_full;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health5.GetComponent<SpriteRenderer>().sprite = health_full;
+        GameObject.Find("StaticGameObject").GetComponent<GameControl>().level = 1;
+        
         SceneManager.LoadScene("Shooter");
         Debug.Log("Level from gameobject: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().level);
     }
