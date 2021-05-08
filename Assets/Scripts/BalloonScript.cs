@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BalloonScript : MonoBehaviour
 {
@@ -80,7 +81,8 @@ public class BalloonScript : MonoBehaviour
                     {
                         Destroy(balloon);
                     }
-                    Debug.Log("Level from gameobject: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().level);
+                    //Increment level
+                    GameObject.Find("StaticGameObject").GetComponent<GameControl>().level++;
                 }
 
             }
@@ -91,6 +93,12 @@ public class BalloonScript : MonoBehaviour
     void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+
+    public void restartShooter()
+    {
+        SceneManager.LoadScene("Shooter");
+        Debug.Log("Level from gameobject: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().level);
     }
 
 }
