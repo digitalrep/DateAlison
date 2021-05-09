@@ -26,11 +26,22 @@ public class BalloonScript : MonoBehaviour
                 transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
 
-                Debug.Log("Current question: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question);
-                Debug.Log("Length correct answers: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers.Length);
+                //Debug.Log("Current question: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question);
+                //Debug.Log("Length correct answers: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers.Length);
+                Debug.Log("Answer on card: " + transform.GetChild(1).GetComponent<TextMeshPro>().text);
+                Debug.Log("Answer: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question]);
+                Debug.Log("Answers[0]: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[0]);
+                Debug.Log("Answers array: ");
+
+                int i = 0;
+                foreach(string answer in GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers)
+                {
+                    Debug.Log(i + ": " + answer);
+                    i++;
+                }
 
                 //If the 'answer' written on this balloon DOES NOT match the answer to the question:
-                if (transform.GetChild(1).GetComponent<TextMeshPro>().text != GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question])
+                    if (transform.GetChild(1).GetComponent<TextMeshPro>().text != GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question])
                 {
                     //Take away a heart/health object
                     switch (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong)
@@ -90,8 +101,6 @@ public class BalloonScript : MonoBehaviour
                     {
                         Destroy(balloon);
                     }
-
-                    GameObject.Find("StaticGameObject").GetComponent<GameControl>().level++;
                 }
 
             }
@@ -106,6 +115,8 @@ public class BalloonScript : MonoBehaviour
 
     public void restartShooterCorrect()
     {
+        GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question++;
+        GameObject.Find("StaticGameObject").GetComponent<GameControl>().level++;
         SceneManager.LoadScene("Shooter");
     }
 
@@ -117,10 +128,7 @@ public class BalloonScript : MonoBehaviour
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health3.GetComponent<SpriteRenderer>().sprite = health_full;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health4.GetComponent<SpriteRenderer>().sprite = health_full;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health5.GetComponent<SpriteRenderer>().sprite = health_full;
-        GameObject.Find("StaticGameObject").GetComponent<GameControl>().level = 1;
-        
         SceneManager.LoadScene("Shooter");
-        Debug.Log("Level from gameobject: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().level);
     }
 
 }

@@ -10,6 +10,7 @@ public class GameControl : MonoBehaviour
     public int level = 1;
     public int current_wrong = 0;
     public int current_question = 0;
+
     public string[] questions =
     {
         "What does Alison do for a living?",
