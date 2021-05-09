@@ -256,8 +256,6 @@ public class ScrollScript : MonoBehaviour
         buttonOption2.onClick.AddListener(delegate { printDialogue(2); });
 
         ratio = Screen.width / 1080f;
-
-        Debug.Log("Level from GameControl.instance: " + GameControl.instance.level);
     }
 
     private void OnEnable()

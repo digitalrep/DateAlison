@@ -7,9 +7,9 @@ public class GameControl : MonoBehaviour
     public static GameControl instance;
 
     //Game Data
-    public int level = 1;
+    /*
+    public int level = 0;
     public int current_wrong = 0;
-    public int current_question = 0;
 
     public string[] questions =
     {
@@ -19,7 +19,7 @@ public class GameControl : MonoBehaviour
         "What is Alison's drink of choice?",
         "Why is Breakfast at Tiffany's her favourite movie?"
     };
-    public string[] answers = 
+    public string[] question_answers = 
     { 
         "nothing",
         "relocation",
@@ -27,7 +27,7 @@ public class GameControl : MonoBehaviour
         "beer", 
         "new life" 
     };
-
+    */
     public List<DialogueOption> chosenOptions = new List<DialogueOption>();
 
     private void Awake()

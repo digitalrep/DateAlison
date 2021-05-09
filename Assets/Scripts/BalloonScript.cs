@@ -26,25 +26,25 @@ public class BalloonScript : MonoBehaviour
                 transform.GetChild(2).GetComponent<SpriteRenderer>().sprite = deflated_balloon;
                 gameObject.GetComponent<Rigidbody2D>().gravityScale = 1.02f;
 
-                //Debug.Log("Current question: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question);
-                //Debug.Log("Length correct answers: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers.Length);
-                Debug.Log("Answer on card: " + transform.GetChild(1).GetComponent<TextMeshPro>().text);
-                Debug.Log("Answer: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question]);
-                Debug.Log("Answers[0]: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[0]);
-                Debug.Log("Answers array: ");
+                //Debug.Log("Length correct answers: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().question_answers.Length);
+                //Debug.Log("Answer on card: " + transform.GetChild(1).GetComponent<TextMeshPro>().text);
+                //Debug.Log("Answers[0]: " + GameObject.Find("StaticGameObject").GetComponent<GameControl>().question_answers[0]);
+                //Debug.Log("Answers array: ");
 
-                int i = 0;
-                foreach(string answer in GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers)
-                {
-                    Debug.Log(i + ": " + answer);
-                    i++;
-                }
+                //int i = 0;
+                //foreach(string answer in GameObject.Find("StaticGameObject").GetComponent<GameControl>().question_answers)
+                //{
+                //    Debug.Log(i + ": " + answer);
+                //    i++;
+                //}
 
                 //If the 'answer' written on this balloon DOES NOT match the answer to the question:
-                    if (transform.GetChild(1).GetComponent<TextMeshPro>().text != GameObject.Find("StaticGameObject").GetComponent<GameControl>().answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question])
+                //if (transform.GetChild(1).GetComponent<TextMeshPro>().text != GameObject.Find("StaticGameObject").GetComponent<GameControl>().question_answers[GameObject.Find("StaticGameObject").GetComponent<GameControl>().level])
+                if(transform.GetChild(1).GetComponent<TextMeshPro>().text != GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().question_answers[GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().level])
                 {
                     //Take away a heart/health object
-                    switch (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong)
+                    //switch (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong)
+                    switch(GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong) 
                     {
                         case 0:
                             GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health1.GetComponent<SpriteRenderer>().sprite = health_hollow;
@@ -71,9 +71,11 @@ public class BalloonScript : MonoBehaviour
                     //increment current_wrong and check if we've used up all our health
                     //If so destroy all the other balloons
 
-                    GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong++;
+                    //GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong++;
+                    GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong++;
 
-                    if (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong == 5)
+                    //if (GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong == 5)
+                    if(GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong == 5)
                     {
                         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().out_button.SetActive(true);
                         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().status_text.SetActive(true);
@@ -115,20 +117,23 @@ public class BalloonScript : MonoBehaviour
 
     public void restartShooterCorrect()
     {
-        GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_question++;
-        GameObject.Find("StaticGameObject").GetComponent<GameControl>().level++;
-        SceneManager.LoadScene("Shooter");
+        //GameObject.Find("StaticGameObject").GetComponent<GameControl>().level++;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().level++;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().level_changed = true;
+        //SceneManager.LoadScene("Shooter");
     }
 
     public void restartShooter()
     {
-        GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong = 0;
+        //GameObject.Find("StaticGameObject").GetComponent<GameControl>().current_wrong = 0;
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().current_wrong = 0;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health1.GetComponent<SpriteRenderer>().sprite = health_full;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health2.GetComponent<SpriteRenderer>().sprite = health_full;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health3.GetComponent<SpriteRenderer>().sprite = health_full;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health4.GetComponent<SpriteRenderer>().sprite = health_full;
         GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().health5.GetComponent<SpriteRenderer>().sprite = health_full;
-        SceneManager.LoadScene("Shooter");
+        //SceneManager.LoadScene("Shooter");
+        GameObject.Find("SecondBow").GetComponent<MoveBowAndArrow>().level_changed = true;
     }
 
 }
